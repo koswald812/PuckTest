@@ -66,7 +66,7 @@ rec_flag = false;
 connection.write("clearInterval(1)\n", function() { });
 } else {
 data.splice(0,data.length);
-connection.write("function(){Bluetooth.println(ecg().toFixed(3));}; \n", function() { });
+connection.write("setInterval(function(){Bluetooth.println(ecg().toFixed(3));} ,20); \n", function() { });
 t = new Date();
 start_time = t;
 var date_win_min = t.getTime();
