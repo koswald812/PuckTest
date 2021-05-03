@@ -43,6 +43,11 @@ function onLine(v) {
 if(rec_flag) {
 var x = new Date(); // current time
 var y = parseFloat(v);
+if (y >= 2) {
+  y = y - 2;
+}
+console.log(v);
+console.log(y);
 if ( x.getTime() >= date_win_max) {
 date_win_min += taxis_increment;
 date_win_max += taxis_increment;
@@ -61,7 +66,7 @@ rec_flag = false;
 connection.write("clearInterval(1)\n", function() { });
 } else {
 data.splice(0,data.length);
-connection.write("setInterval(function(){Bluetooth.println(ecg().toFixed(3));} ,20); \n", function() { });
+connection.write("setInterval(function(){Bluetooth.println(ecg().toFixed(3));} ,10); \n", function() { });
 t = new Date();
 start_time = t;
 var date_win_min = t.getTime();
